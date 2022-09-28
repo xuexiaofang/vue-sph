@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
+    <!-- <router-link to="/home"></router-link> -->
+    <router-view></router-view>
+    <!-- <Footer v-show="$route.path==='/home'||$route.path==='/search'"></Footer> -->
+    <Footer v-show="$route.meta.isShow"></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
+  data() {
+    return {  
+    }
+  },
   components: {
-    HelloWorld
+    Header,
+    Footer,
+   
+  },
+  methods: {
+    
+  },
+  mounted() {
+    this.$store.dispatch("categoryList");
   }
 }
 </script>
