@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    11
+  <div id="app">2222
     <Header></Header>
     <!-- <router-link to="/home"></router-link> -->
     <router-view></router-view>
