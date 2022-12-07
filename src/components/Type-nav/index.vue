@@ -5,44 +5,48 @@
       <div class="container">
         <div @mouseleave="notShow">
           <h2 class="all" @mouseenter="isShow">全部商品分类</h2>
+          <!-- 一二三级菜单栏 -->
           <div class="sort" v-show="show">
             <div class="all-sort-list2">
+              <!-- 每一个一级菜单 -->
               <div
                 @click="goSearch"
                 class="item bo"
-                v-for="(item, index) in categoryList.slice(0, 15)"
-                :key="item.categoryId"
+                v-for="(c1, index) in categoryList.slice(0, 15)"
+                :key="c1.categoryId"
                 @mouseenter="changeIndex(index)"
                 :class="{ cur: currentId === index }"
               >
                 <h3 @mouseenter="changeIndex(index)" style="padding: 0">
                   <a
-                    :data-categoryName="item.categoryName"
-                    :data-category1Id="item.categoryId"
+                    :data-categoryName="c1.categoryName"
+                    :data-category1Id="c1.categoryId"
                     style="width: 100%; display: inline-block"
-                    >{{ item.categoryName }}</a
+                    >{{ c1.categoryName }}</a
                   >
                 </h3>
                 <div class="item-list clearfix">
+                  <!-- 二级菜单 -->
                   <div
                     class="subitem"
-                    v-for="c in item.categoryChild"
-                    :key="c.categoryId"
+                    v-for="c2 in c1.categoryChild"
+                    :key="c2.categoryId"
                   >
                     <dl class="fore">
                       <dt>
                         <a
-                          :data-categoryName="c.categoryName"
-                          :data-category2Id="c.categoryId"
-                          >{{ c.categoryName }}</a
+                          :data-categoryName="c2.categoryName"
+                          :data-category2Id="c2.categoryId"
+                          >{{ c2.categoryName }}</a
                         >
                       </dt>
+                      <!-- 三级菜单 -->
                       <dd>
-                        <em v-for="c2 in c.categoryChild" :key="c2.categoryId">
+                        <em v-for="c3 in c2.categoryChild" :key="c3.categoryId">
                           <a
-                            :data-categoryName="c2.categoryName"
-                            :data-category3Id="c2.categoryId"
-                            >{{ c2.categoryName }}</a
+                            :data-categoryName="c3.categoryName"
+                            :data-category3Id="c3.categoryId"
+                            >{{ c3.categoryName }}</a
                           >
                         </em>
                       </dd>
@@ -247,12 +251,15 @@ export default {
 
           &:hover {
             .item-list {
-              display: block;
+              //display: block;
             }
           }
         }
         .cur {
           background: rgb(16, 98, 131);
+          .item-list {
+              display: block;
+            }
         }
       }
     }

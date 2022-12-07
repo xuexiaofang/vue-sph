@@ -1,6 +1,6 @@
 <template>
-  <div id="app">2222
-    <Header></Header>
+  <div id="app">
+    <Header class="header"></Header>
     <!-- <router-link to="/home"></router-link> -->
     <router-view></router-view>
     <!-- <Footer v-show="$route.path==='/home'||$route.path==='/search'"></Footer> -->

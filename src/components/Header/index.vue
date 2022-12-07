@@ -36,12 +36,13 @@
         </router-link>
       </h1>
       <div class="searchArea">
-        <form action="###" class="searchForm">
+        <form class="searchForm" onsubmit="return false">
           <input
             type="text"
           id="autocomplete"
             class="input-error input-xxlarge"
             v-model="searchVal"
+            @keyup.enter="search"
           />
           <button class="sui-btn btn-xlarge btn-danger" type="button" @click="search" >
             搜索

@@ -16,6 +16,7 @@ const requests = axios.create({
 //请求拦截器，在发请求前，请求拦截器会检测到，可以在发送请求前做一些事情
 requests.interceptors.request.use(
   (config) => {
+    
     if (store.state.detail.uuid) {
       config.headers.userTempId = store.state.detail.uuid;
     }
@@ -25,10 +26,13 @@ requests.interceptors.request.use(
     nProgress.start();
     //config：配置对象，对象里的一个属性很重要，header请求头
     return config;
-  },
+  },(error)=>{
+    console.log(error);
+  }
 );
  //响应拦截器
 requests.interceptors.response.use((res) => {
+  // console.log(res);
     nProgress.done()
   //成功的回调函数，服务器响应数据回来以后，响应拦截器可以检测到，可以做一些事情
     return res.data

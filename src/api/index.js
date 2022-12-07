@@ -5,9 +5,11 @@ import mockRequest from './mockRequest'
  export const reqCategoryList = () => requests.get(  "/product/getBaseCategoryList");
 export const reqGetBannerList = () => mockRequest.get("/banner")
 export const reqFloorList = () => mockRequest.get('/floor')
-export const reqSearchList = (params) =>requests({ url: "/list", method: "post", data: params });
+// 搜索商品接口地址/api/list 
+export const reqSearchList = (data) =>requests({ url: "/list", method: "post", data});
+// 获取商品详情地址/api/item/{skuId}
 export const reqDetailList = (skuId) => requests({ url: `/item/${skuId}`, method: "get" });
-//cart/addToCart/{ skuId }/{ skuNum } 
+//添加到购物车，对已有物品进行数量改动。cart/addToCart/{ skuId }/{ skuNum } 
 export const reqAddCars = (skuId,skuNum)=>{requests({ url: `/cart/addToCart/${skuId}/${skuNum}`,method:"post" });}
 //获取购物车列表接口/cart/cartList
 export const reqCartList = () => requests({ url: "/cart/cartList",method:'get' });
@@ -15,7 +17,7 @@ export const reqCartList = () => requests({ url: "/cart/cartList",method:'get' }
 export const reqSendCode = (phone) => requests({ url: `/user/passport/sendCode/${phone}`, method: 'get' });
  //注册接口/api/user/passport/register
 export const reqRegister = (data) => requests({ url: `/user/passport/register`, data, method: 'post' })
-//登录接口/api/user/passport/login
+//登录接口/api/user/passport/login  接口文档需要phone和password俩个参数，把这俩个参数放在data对象里
 export const reqLogin = (data) => requests({ url: "/user/passport/login", data, method: 'post' });
 //带着token去获取用户信息的接口/api/user/passport/auth/getUserInfo
 export const reqGetUserInfo = () => requests({ url: "/user/passport/auth/getUserInfo", method: 'get' });
@@ -25,7 +27,7 @@ export const reqLogout = () => requests({ url: "/user/passport/logout", method: 
 export const reqFindUserAddressList = () =>requests({ url: "/user/userAddress/auth/findUserAddressList", method: 'get' });
   //获取订单交易页信息/api/order/auth/trade
 export const reqTrade = () => requests({ url: "/order/auth/trade", method: 'get' });
-  //提交订单/api/order/auth/submitOrder?tradeNo={tradeNo}
+  //提交订单/api/order/auth/submitOrder?tradeNo={tradeNo}  tradeNo拼接在url路径中，其余参数以对象形式在data中
 export const reqSubmitOrder = (tradeNo, data) => requests({ url: `/order/auth/submitOrder?tradeNo=${tradeNo}`, data, method: 'post' })
 //获取订单支付信息接口 /api/payment/weixin/createNative/{orderId}
 export const reqCreateNative = (orderId) => requests({ url: `/payment/weixin/createNative/${orderId}`, method: 'get' })

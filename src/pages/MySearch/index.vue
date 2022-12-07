@@ -181,6 +181,7 @@ export default {
       }
       this.getData();
     },
+    // 搜索商品
     getData() {
       this.$store.dispatch("GetSearchList", this.cate);
     },
@@ -227,7 +228,6 @@ export default {
     // console.log(this.cate);
   },
   mounted() {
-    console.log('重新挂载了');
     this.getData();
     this.$bus.$on("sendTradeName", (Trade) => {
       this.cate.trademark = `${Trade.tmId}:${Trade.tmName}`;

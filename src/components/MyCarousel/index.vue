@@ -21,6 +21,8 @@ import Swiper from "swiper";
 export default {
   name: "MyCarousel",
   props: ["list"],
+  mounted(){
+  },
   watch: {
     list: {
           immediate: true,
