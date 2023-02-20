@@ -140,16 +140,17 @@ router.beforeEach(async(to,_,next) => {
          next();
       } else {
         //派发获取用户信息的actions
-     try {
-       await store.dispatch("getUserInfo");
-      //  console.log('获取用户信息成功，页面此时有用户信息');
-       next()
-     } catch (error) {
-      //失败的情况是token失效了，要退出登录，重新登录
-       await store.dispatch("getLogout")
-       console.log('token失效，请重新登录');
-        next('/login')
-     }
+        try {
+          await store.dispatch("getUserInfo");
+          console.log('发送获取用户信息的请求');
+          //  console.log('获取用户信息成功，页面此时有用户信息');
+          next()
+        } catch (error) {
+          //失败的情况是token失效了，要退出登录，重新登录
+          await store.dispatch("getLogout")
+          console.log('token失效,请重新登录');
+            next('/login')
+        }
       }
     }
  

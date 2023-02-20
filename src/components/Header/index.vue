@@ -93,7 +93,7 @@ methods: {
  async exit() {
     try {
       await this.$store.dispatch('getLogout')
-      this.$router.push('/home')
+      this.$router.push('/login')
     } catch (error) {
       alert(error.message)
     }

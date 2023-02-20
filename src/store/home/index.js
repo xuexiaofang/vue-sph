@@ -5,11 +5,19 @@ import {
 } from "@/api";
 
 const actions = {
-  async categoryList({ commit }) {
-    const reslut = await reqCategoryList();
-    if (reslut.code === 200) {
-      commit("CATEGORYLIST", reslut.data);
-    }
+  // async categoryList({ commit }) {
+  //   const reslut = await reqCategoryList();
+  //   if (reslut.code === 200) {
+  //     console.log(reslut);
+  //     commit("CATEGORYLIST", reslut.data);
+  //   }
+//}
+  categoryList({commit}){
+    reqCategoryList().then((res)=>{if (res.code === 200) {
+          console.log(res);
+          commit("CATEGORYLIST", res.data);
+        }})
+  
   },
   async getBannerList({ commit }) {
     const reslut = await reqGetBannerList();

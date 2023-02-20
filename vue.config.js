@@ -3,6 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
   //代理跨域
   devServer: {
+    port:8090,
+    open:true,
     proxy: {
       "/api": {
         target: "http://gmall-h5-api.atguigu.cn",

@@ -4,6 +4,7 @@ const actions = {
   async getDetailInfo({ commit }, skuid) {
     const reslut = await reqDetailList(skuid);
     if (reslut.code === 200) {
+      
       commit("GETDETAILINFO", reslut.data);
     }
   },

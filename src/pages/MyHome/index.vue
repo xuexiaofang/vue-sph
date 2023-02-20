@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{userInfo.loginName}}
     <TypeNav />
     <ListContainer />
     <TodayRecommend/>
@@ -27,7 +28,10 @@ export default {
    
   },
   computed: {
-        ...mapState({'floorList':state=>state.home.floorList})
+        ...mapState({'floorList':state=>state.home.floorList}),
+        userInfo() {
+      return this.$store.state.user.userInfo
+    }  
     },
  mounted() {
    this.$store.dispatch('GetFloorList')

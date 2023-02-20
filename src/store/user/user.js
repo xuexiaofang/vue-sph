@@ -30,6 +30,7 @@ const actions = {
       if (result.code === 200) {
             localStorage.setItem("token",result.data.token);
           commit('GETLOGIN', result.data.token)
+          console.log(result.data);
           return '登录成功'
       } else {
           return Promise.reject(new Error('登录失败'))
@@ -39,6 +40,7 @@ const actions = {
        const result = await reqGetUserInfo()
        if (result.code === 200) {
            commit("GETUSERINFO", result.data);
+           console.log(result.data);
            return '获取用户信息成功'
       }else{
         return Promise.reject(new Error('获取用户信息失败'))
@@ -71,7 +73,7 @@ const mutations = {
   },
     GETLOGOUT(state) {
         state.userInfo = {},
-            state.token = ''
+        state.token = ''
           
   }
 };
