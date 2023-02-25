@@ -28,6 +28,7 @@ requests.interceptors.request.use(
     return config;
   },(error)=>{
     console.log(error);
+    return Promise.reject(error);
   }
 );
  //响应拦截器
@@ -36,8 +37,8 @@ requests.interceptors.response.use((res) => {
     nProgress.done()
   //成功的回调函数，服务器响应数据回来以后，响应拦截器可以检测到，可以做一些事情
     return res.data
-}, () => {
-    return Promise.reject(new Error("从服务器回来了的响应拦截器失败"))  
+}, (err) => {           
+    return Promise.reject(err)  
 })
 
 export default requests
