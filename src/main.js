@@ -4,7 +4,8 @@ import router from './router'
 import store  from './store'
 import TypeNav from '@/components/Type-nav'
 import 'swiper/css/swiper.css'
-import MyCarousel from "@/components/MyCarousel";
+// import MyCarousel from "@/components/MyCarousel";
+import MySwiper from "@/components/MyCarousel/MySwiper"
 import Pagination from '@/components/Pagination'
 import '@/mock/mockServer'
 import * as API from '@/api'
@@ -18,7 +19,8 @@ Vue.use(VueLazyload, {
   loading: pikaqiu,
 });
 Vue.component(Pagination.name, Pagination);
-Vue.component(MyCarousel.name, MyCarousel);
+// Vue.component(MyCarousel.name, MyCarousel);
+Vue.component(MySwiper.name, MySwiper);
 Vue.component(TypeNav.name, TypeNav)
 // Vue.use(MessageBox);
 Vue.prototype.$msgbox = MessageBox;

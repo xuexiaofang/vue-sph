@@ -4,7 +4,7 @@
             <div class="sortList clearfix">
                 <div class="center">
                     <!--banner轮播-->
-                     <MyCarousel :list="bannerList"/>
+                     <MySwiper :list="bannerList"/>
                 </div>
                 <div class="right">
                     <div class="news">
@@ -90,9 +90,11 @@
 </template>
 
 <script>
+import MySwiper from "@/components/MyCarousel/MySwiper.vue"
     import { mapState } from 'vuex';
 export default {
     name: 'ListContainer',
+    components:{MySwiper},
     computed: {
         ...mapState({bannerList:state=>state.home.bannerList})
     },

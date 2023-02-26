@@ -119,6 +119,10 @@ const router = new VueRouter({
       path: "/",
       redirect: "/home",
     },
+    {
+      path:'/swiper',
+      component: () => import("@/components/MyCarousel/MySwiper.vue"),
+    }
   ],
   scrollBehavior() {
     // 始终滚动到顶部

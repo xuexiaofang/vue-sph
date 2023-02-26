@@ -22,7 +22,10 @@
                                 </ul>
                                 <img :src="floor.imgUrl" />
                             </div>
-                           <MyCarousel :list="floor.carouselList"/>
+                            <div style="width:330px;height:363px">
+                                <MySwiper :list="floor.carouselList"/>
+                            </div>
+                           
                             <div class="split">
                                 <span class="floor-x-line"></span>
                                 <div class="floor-conver-pit">
